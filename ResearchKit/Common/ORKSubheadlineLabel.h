@@ -36,4 +36,6 @@
 ORK_CLASS_AVAILABLE
 @interface ORKSubheadlineLabel : ORKLabel
 
+@property (nonatomic) BOOL compressFontSize;
+
 @end

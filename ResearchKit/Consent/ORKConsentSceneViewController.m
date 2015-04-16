@@ -64,6 +64,10 @@
     self.headerView.instructionLabel.hidden = ! [[consentSection summary] length];
     self.headerView.captionLabel.text = consentSection.title;
     
+    // Hack: limit the font size of instructional text during consent.
+    self.headerView.instructionLabel.compressFontSize = YES;
+    self.headerView.learnMoreButton.compressFontSize = YES;
+    
     UIImage *image = nil;
     if (consentSection.type == ORKConsentSectionTypeCustom) {
         image = [consentSection.customImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];

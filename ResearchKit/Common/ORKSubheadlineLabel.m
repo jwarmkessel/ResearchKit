@@ -33,14 +33,47 @@
 
 @implementation ORKSubheadlineLabel
 
+static const CGFloat defaultSize = 15;
+
 + (UIFont *)defaultFont {
     
     UIWindow *window = [[[UIApplication sharedApplication] windows] firstObject];
     ORKScreenType screenType = ORKGetScreenTypeForWindow(window);
     
     UIFontDescriptor *descriptor = [UIFontDescriptor preferredFontDescriptorWithTextStyle:UIFontTextStyleSubheadline];
-    const CGFloat defaultSize = 15;
     return [UIFont systemFontOfSize:[[descriptor objectForKey: UIFontDescriptorSizeAttribute] doubleValue] - defaultSize + ORKGetMetricForScreenType(ORKScreenMetricFontSizeSubheadline, screenType)];
 }
+
+- (CGFloat)normalFontSize {
+    UIWindow *window = [[[UIApplication sharedApplication] windows] firstObject];
+    ORKScreenType screenType = ORKGetScreenTypeForWindow(window);
+    return ORKGetMetricForScreenType(ORKScreenMetricFontSizeSubheadline, screenType);
+}
+
+- (UIFont *)defaultFont {
+    UIFont *font = [[self class] defaultFont];
+    if (_compressFontSize) {
+        
+        CGFloat normalFontSize = [self normalFontSize];
+        
+        if (font.pointSize > normalFontSize) {
+            font = [font fontWithSize:normalFontSize];
+        }
+    }
+    return font;
+}
+
+- (void)setCompressFontSize:(BOOL)compressFontSize {
+    _compressFontSize = compressFontSize;
+    [self updateAppearance];
+}
+
+// Nasty override (hack)
+- (void)updateAppearance
+{
+    self.font = [self defaultFont];
+    [self invalidateIntrinsicContentSize];
+}
+
 
 @end

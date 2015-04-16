@@ -73,11 +73,27 @@
     [self setTitleColor:[[self tintColor] colorWithAlphaComponent:0.7] forState:UIControlStateHighlighted];
 }
 
-- (void)updateAppearance {
-    
-    self.titleLabel.font = [[self class] defaultFont];
-    [self invalidateIntrinsicContentSize];
+- (UIFont *)defaultFont {
+    UIFont *font = [[self class] defaultFont];
+    if (_compressFontSize) {
+        
+        const CGFloat normalFontSize = 14;
+        
+        if (font.pointSize > normalFontSize) {
+            font = [font fontWithSize:normalFontSize];
+        }
+    }
+    return font;
+}
 
+- (void)setCompressFontSize:(BOOL)compressFontSize {
+    _compressFontSize = compressFontSize;
+    [self updateAppearance];
+}
+
+- (void)updateAppearance {
+    self.titleLabel.font = [self defaultFont];
+    [self invalidateIntrinsicContentSize];
 }
 
 - (void)dealloc {

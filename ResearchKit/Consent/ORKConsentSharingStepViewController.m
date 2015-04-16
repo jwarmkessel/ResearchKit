@@ -39,7 +39,7 @@
 - (instancetype)initWithStep:(ORKStep *)step {
     self = [super initWithStep:step];
     if (self) {
-        [super setLearnMoreButtonItem:[[UIBarButtonItem alloc] initWithTitle:ORKLocalizedString(@"LEARN_MORE_CONSENT_SHARING", nil) style:UIBarButtonItemStylePlain target:self action:@selector(consentLearnMoreAction:)]];
+        [super setLearnMoreButtonItem:[[UIBarButtonItem alloc] initWithTitle:ORKLocalizedString(@"BUTTON_LEARN_MORE", nil) style:UIBarButtonItemStylePlain target:self action:@selector(consentLearnMoreAction:)]];
     }
     return self;
 }

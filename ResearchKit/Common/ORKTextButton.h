@@ -37,6 +37,8 @@
 ORK_CLASS_AVAILABLE
 @interface ORKTextButton : UIButton <ORKDefaultFont>
 
+@property (nonatomic) BOOL compressFontSize;
+
 @end
 
 @interface ORKTextButton ()
