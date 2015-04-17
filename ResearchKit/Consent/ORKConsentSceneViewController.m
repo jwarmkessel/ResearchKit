@@ -93,38 +93,7 @@
 @end
 
 static NSString *localizedLearnMoreForType(ORKConsentSectionType sectionType) {
-    NSString *str = ORKLocalizedString(@"BUTTON_LEARN_MORE", nil);
-    switch (sectionType) {
-        case ORKConsentSectionTypeOverview:
-            str = ORKLocalizedString(@"LEARN_MORE_WELCOME", nil);
-            break;
-        case ORKConsentSectionTypeDataGathering:
-            str = ORKLocalizedString(@"LEARN_MORE_DATA_GATHERING", nil);
-            break;
-        case ORKConsentSectionTypePrivacy:
-            str = ORKLocalizedString(@"LEARN_MORE_PRIVACY", nil);
-            break;
-        case ORKConsentSectionTypeDataUse:
-            str = ORKLocalizedString(@"LEARN_MORE_DATA_USE", nil);
-            break;
-        case ORKConsentSectionTypeTimeCommitment:
-            str = ORKLocalizedString(@"LEARN_MORE_TIME_COMMITMENT", nil);
-            break;
-        case ORKConsentSectionTypeStudySurvey:
-            str = ORKLocalizedString(@"LEARN_MORE_STUDY_SURVEY", nil);
-            break;
-        case ORKConsentSectionTypeStudyTasks:
-            str = ORKLocalizedString(@"LEARN_MORE_TASKS", nil);
-            break;
-        case ORKConsentSectionTypeWithdrawing:
-            str = ORKLocalizedString(@"LEARN_MORE_WITHDRAWING", nil);
-            break;
-        case ORKConsentSectionTypeOnlyInDocument:
-            assert(0); // assert and fall through to custom
-        case ORKConsentSectionTypeCustom:
-            break;
-    }
-    return str;
+    return ORKLocalizedString(@"BUTTON_LEARN_MORE", nil);
 }
 
 @implementation ORKConsentSceneViewController
